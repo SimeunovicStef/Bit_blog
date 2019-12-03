@@ -15,6 +15,7 @@ class AuthorServices {
             })
     }
 
+
     fetchSingleAuthor(id) {
         const singleAuthorEndpoint = `${authorEndpoint}/${id}`
         return fetch(singleAuthorEndpoint)
@@ -36,6 +37,8 @@ class AuthorServices {
         })
         return myAuthorsData
     }
+
+
     createAuthorInstance(author) {
         const { id, name, username, email, address, phone, company } = author;
         const street = address.street;
@@ -46,5 +49,34 @@ class AuthorServices {
         const authorId = id;
         return new Author(authorId, name, username, email, street, city, zipcode, phone, companyName, slogan)
     }
+
+
+    fetchRandomPicture(randomPictureEndpoint) {
+        return fetch(randomPictureEndpoint)
+            .then(response => response.json())
+            .then(response => {
+                const pictureSrc = response.results[0].picture.large;
+                return pictureSrc;
+            })
+    }
+
+
+    getAuthors() {
+        const authors = storageServices.getData('authors');
+
+        const adaptedAuthors = authors.map(author => {
+            const { authorId, name, username, email, street, city, zipcode, phone, companyName, slogan } = author;
+            return new Author(authorId, name, username, email, street, city, zipcode, phone, companyName, slogan)
+        });
+        return adaptedAuthors;
+    }
+
+
+    getSingleAuthor() {
+        const singleAuthor = storageServices.getData('singleAuthor');
+
+        const { authorId, name, username, email, street, city, zipcode, phone, companyName, slogan } = singleAuthor;
+        return new Author(authorId, name, username, email, street, city, zipcode, phone, companyName, slogan)
+    }
 }
-export const AuthorServices = new AuthorServices();
+export const authorsServices = new AuthorServices();

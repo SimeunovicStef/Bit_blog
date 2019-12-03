@@ -5,7 +5,7 @@ const SingleAuthor = (props) => {
         <>
             <div>
                 <button className=''>All authors</button>
-                <h3>Single Author</h3>
+                <h3 className='post'>Single Author</h3>
                 <img></img>
                 <h5>Name Surname</h5>
                 <span>username: </span> <br />

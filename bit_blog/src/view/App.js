@@ -9,12 +9,14 @@ import About from './components/About'
 import Authors from './components/Authors';
 
 
+
 function App() {
   return (
     <div className="App">
       <Header />
 
       <Switch>
+
         <Route path="/posts/new" component={NewPost} />
         <Route path="/authors" component={Authors} />
         <Route path="/about" component={About} />
