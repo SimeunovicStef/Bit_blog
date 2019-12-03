@@ -14,14 +14,17 @@ code {
 }
 
 body {
-  width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 30px;
 }
 
 /* header */
-.title {
-  padding-left: 100px;
-  padding-top: 100px;
+.navMenu li {
+  display: inline;
+  padding: 15px;
 }
 
+
+/* fotter */
+footer {
+  text-align: center;
+}
