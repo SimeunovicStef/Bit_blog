@@ -1,33 +1,33 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { authorsServices } from '../../../service/Service-authors'
+import { authorDetails, AuthorDetails } from '../page/authorDetails'
 
-const SingleAuthor = (props) => {
-    return (
-        <>
-            <div>
-                <button className=''>All authors</button>
-                <h3 className='post'>Single Author</h3>
-                <img></img>
-                <h5>Name Surname</h5>
-                <span>username: </span> <br />
-                <span>email: </span> <br />
-                <span>phone: </span> <br />
-            </div>
-            <hr />
-            <div>
-                <h4>Address</h4>
-                <p>Street: {street}</p>
-                <p>city: {city}</p>
-                <p>zipcode: {zipcode}</p>
-                <iframe></iframe>
-            </div>
-            <hr />
-            <div>
-                <h4>Company</h4>
-                <p>name:{name}</p>
-                <p>slogan{slogan}</p>
-            </div>
+class SingleAuthor extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            author: null
+        }
+    }
 
-        </>
-    )
+    componentDidMount() {
+        const authorId = this.props.match.params.id;
+        console.log(authorId);
+        authorsServices.fetchSingleAuthor(authorId)
+            .then(author => {
+                this.setState({ author: author })
+            });
+    }
+
+    render() {
+        if (!this.state.author) {
+            return <h2>Loading...</h2>
+        }
+        const { author } = this.state
+        return (
+            <AuthorDetails author={author} />
+        )
+    }
 }
 export default SingleAuthor

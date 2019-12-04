@@ -10,8 +10,6 @@ class Author {
         this.phone = phone;
         this.companyName = companyName;
         this.slogan = slogan;
-
-
     }
 }
 export default Author

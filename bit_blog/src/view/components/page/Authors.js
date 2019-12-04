@@ -16,9 +16,9 @@ class AuthorsList extends React.Component {
             })
     }
     render() {
-        const authors = this.state.authors.map(authors => (
+        const authors = this.state.authors.map(author => (
             <li>
-                <h3><Link to='/authors/'>{authors.name}</Link></h3>
+                <h3><Link to={`/authors/${author.authorId}`}>{author.name}</Link></h3>
             </li>
         ))
         return authors

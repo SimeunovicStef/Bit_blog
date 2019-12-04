@@ -11,7 +11,7 @@ class SinglePosts extends React.Component {
     }
     componentDidMount() {
         let postId = this.props.match.params.id;
-        console.log(postId);
+
         postsServices.fetchSinglePost(postId)
             .then(singlePost => {
                 this.setState({ singlePost })

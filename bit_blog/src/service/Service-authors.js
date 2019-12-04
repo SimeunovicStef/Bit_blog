@@ -29,8 +29,6 @@ class AuthorServices {
             })
     }
 
-
-
     adaptAuthorsData(authorsData) {
         const myAuthorsData = authorsData.map(author => {
             return this.createAuthorInstance(author);
@@ -47,7 +45,9 @@ class AuthorServices {
         const companyName = company.name;
         const slogan = company.catchPhrase;
         const authorId = id;
+        console.log(author)
         return new Author(authorId, name, username, email, street, city, zipcode, phone, companyName, slogan)
+
     }
 
 
