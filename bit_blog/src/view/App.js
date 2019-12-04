@@ -6,6 +6,7 @@ import NewPost from './components/page/NewPost'
 import { Route, Switch } from 'react-router-dom'
 import About from './components/page/About'
 import Authors from './components/page/Authors';
+import SinglePost from './components/page/SinglePost';
 
 
 
@@ -15,7 +16,7 @@ function App() {
       <Header />
 
       <Switch>
-
+        <Route path="/posts/:id" component={SinglePost} />
         <Route path="/posts/new" component={NewPost} />
         <Route path="/authors" component={Authors} />
         <Route path="/about" component={About} />

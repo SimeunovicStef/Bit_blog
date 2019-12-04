@@ -21,7 +21,7 @@ class Posts extends React.Component {
   render() {
     const filteredposts = this.state.posts.map(post => (
       <li>
-        <h3><Link to='/post/'>{post.title}</Link></h3>
+        <h3><Link to={'/posts/' + post.postId}>{post.title}</Link></h3>
         <p>{post.body}</p>
         <hr />
       </li>
