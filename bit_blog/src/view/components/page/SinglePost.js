@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { postsServices } from '../../../service/PostsService'
-
+import { authorsServices } from "../../../service/Service-authors"
 class SinglePosts extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            author: {},
             singlePost: null
         }
     }
@@ -16,6 +17,14 @@ class SinglePosts extends React.Component {
             .then(singlePost => {
                 this.setState({ singlePost })
             })
+            .then(() =>
+                authorsServices.fetchSingleAuthor(this.state.singlePost.userId)
+                    .then(author => {
+                        this.setState({
+                            author: author
+                        })
+                    }
+                    ))
     }
 
 
@@ -27,7 +36,7 @@ class SinglePosts extends React.Component {
             <div>
                 <button className='back'><Link to='/posts/'>Back</Link></button>
                 <h3>{this.state.singlePost.title}</h3>
-                <h5><a>Author Name</a></h5>
+                <h5><a>{this.state.author.name}</a></h5>
                 <p>{this.state.singlePost.body}</p>
                 <hr />
                 <h4>3 more posts from same author</h4>
