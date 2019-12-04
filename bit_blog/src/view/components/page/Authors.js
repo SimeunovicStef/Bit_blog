@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { authorsServices } from '../../service/Service-authors'
+import { authorsServices } from '../../../service/Service-authors'
 
 class AuthorsList extends React.Component {
     constructor(props) {

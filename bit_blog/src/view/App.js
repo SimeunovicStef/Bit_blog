@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from './components/Header';
-import Main from './components/Main';
+import Main from './components/page/Main';
 import Footer from './components/Footer'
-import NewPost from './components/NewPost'
+import NewPost from './components/page/NewPost'
 import { Route, Switch } from 'react-router-dom'
-import About from './components/About'
-import Authors from './components/Authors';
+import About from './components/page/About'
+import Authors from './components/page/Authors';
 
 
 

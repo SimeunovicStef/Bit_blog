@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { postsServices } from '../../service/PostsService'
+import { postsServices } from '../../../service/PostsService'
 
 
 class Posts extends React.Component {
