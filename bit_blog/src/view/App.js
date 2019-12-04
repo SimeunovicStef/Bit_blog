@@ -4,7 +4,6 @@ import Main from './components/Main';
 import Footer from './components/Footer'
 import NewPost from './components/NewPost'
 import { Route, Switch } from 'react-router-dom'
-import '../../src/App.css'
 import About from './components/About'
 import Authors from './components/Authors';
 

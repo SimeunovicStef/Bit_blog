@@ -14,7 +14,6 @@ code {
 }
 
 body {
-  width: 600px;
   margin-left: auto;
   margin-right: auto;
   padding: 30px;
@@ -26,9 +25,18 @@ body {
   padding: 15px;
 }
 
+.navMenu {
+  float: right;
+  font-size: 25px;
+}
+
 /* main */
 .post {
   text-align: center;
+}
+
+li {
+  list-style: none;
 }
 
 /* fotter */
@@ -36,3 +44,6 @@ footer {
   text-align: center;
 }
 
+hr {
+  border: 1px solid black;
+}

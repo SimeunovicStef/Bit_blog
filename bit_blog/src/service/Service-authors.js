@@ -1,15 +1,15 @@
 import Author from '../models/Author'
-import { authorsEndpoint } from '../../shared/constants'
-import { StorageServices } from '../../shared/storageService'
+import { authorsEndpoint } from './../shared/constants'
+import { storageServices } from './../shared/storageService'
 
 class AuthorServices {
 
-    fetchAuthors(authorsEndpoint) {
+    fetchAuthors() {
         return fetch(authorsEndpoint)
             .then(response => response.json())
             .then(myResponse => {
                 const authorsList = this.adaptAuthorsData(myResponse)
-                StorageServices.saveData('authors', authorsList)
+                storageServices.saveData('authors', authorsList)
 
                 return authorsList
             })
@@ -17,13 +17,13 @@ class AuthorServices {
 
 
     fetchSingleAuthor(id) {
-        const singleAuthorEndpoint = `${authorEndpoint}/${id}`
+        const singleAuthorEndpoint = `${authorsEndpoint}/${id}`
         return fetch(singleAuthorEndpoint)
 
             .then(response => response.json())
             .then(myResponse => {
                 const newAuthor = this.createAuthorInstance(myResponse)
-                StorageServices.saveData('singleAuthor', newAuthor)
+                storageServices.saveData('singleAuthor', newAuthor)
 
                 return newAuthor
             })

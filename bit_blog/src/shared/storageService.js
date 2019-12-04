@@ -9,4 +9,4 @@ class StorageServices {
     }
 }
 
-export const StorageServices = new StorageServices();
+export const storageServices = new StorageServices();

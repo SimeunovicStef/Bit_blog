@@ -1,11 +1,36 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { authorsServices } from '../../service/Service-authors'
+
+class AuthorsList extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            authors: []
+        }
+    }
+    componentDidMount() {
+        authorsServices.fetchAuthors()
+            .then(authors => {
+                this.setState({ authors: authors })
+            })
+    }
+    render() {
+        const authors = this.state.authors.map(authors => (
+            <li>
+                <h3><Link to='/authors/'>{authors.name}</Link></h3>
+            </li>
+        ))
+        return authors
+    }
+}
 
 
 const Authors = (props) => {
     return (
         <>
-            <h3 className='post'>AUTHORS (6)</h3>
-            <a>Name Surname (2 - posts)</a>
+            <h3 className='post'>AUTHORS</h3>
+            <AuthorsList />
         </>
     )
 }

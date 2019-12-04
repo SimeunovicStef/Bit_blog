@@ -3,20 +3,18 @@ import { postsEndpoint } from '../shared/constants'
 import { storageServices } from '../shared/storageService'
 
 class PostServices {
-    fetchPosts(postsEndpoint) {
+    fetchPosts() {
         return fetch(postsEndpoint)
             .then(response => response.json())
             .then(myData => {
+                storageServices.saveData('posts', myData)
                 const postsList = this.adaptPostData(myData)
-                storageServices.saveData('posts', postsList)
                 return postsList;
             })
     }
 
     creatPostInstance(post) {
         let { title, body, id, userId } = post;
-        title = `${title.charAt(0).toUpperCase()}`
-        body = `${body.charAt(0).toUpperCase()}`
         return new Post(title, body, id, userId);
     }
 
@@ -51,9 +49,6 @@ class PostServices {
         return fetch(postsEndpoint, {
             method: 'POST',
             body: JSON.stringify(myPost)
-            // headers: {
-            //     'Content-Type':'application/json'
-            // }
         })
             .then(response => response.json())
             .then((myPost) => {
@@ -62,4 +57,4 @@ class PostServices {
     }
 }
 
-export const PostService = new PostServices();
+export const postsServices = new PostServices()
