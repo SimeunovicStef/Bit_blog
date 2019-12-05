@@ -2,12 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { postsServices } from '../../../service/PostsService'
 import { authorsServices } from "../../../service/Service-authors"
+import { authorsEndpoint } from '../../../shared/constants'
+import RelatedPostList from './RelatedPostsList'
+
 class SinglePosts extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             author: {},
-            singlePost: null
+            singlePost: null,
+            relatedPosts: []
         }
     }
     componentDidMount() {
@@ -25,6 +29,7 @@ class SinglePosts extends React.Component {
                         })
                     }
                     ))
+
     }
 
 
@@ -39,7 +44,7 @@ class SinglePosts extends React.Component {
                 <h5><a>{this.state.author.name}</a></h5>
                 <p>{this.state.singlePost.body}</p>
                 <hr />
-                <h4>3 more posts from same author</h4>
+                <RelatedPostList post={this.state.singlePost} />
                 <a></a>
             </div>
         )

@@ -44,6 +44,29 @@ class PostServices {
             .then(data => this.creatPostInstance(data))
     }
 
+    fetchRelatedPosts(id) {
+
+        if (id === 11) {
+            const posts = this.getPosts();
+            const relatedPosts = posts.filter(post => {
+                return post.userId === id;
+            })
+            return new Promise((res, rej) => {
+                res(relatedPosts)
+            })
+
+        } else {
+            const relatedPostsEndpoint = `${postsEndpoint}?userId=${id}`
+            return fetch(relatedPostsEndpoint)
+                .then(response => response.json())
+                .then(myData => {
+                    const postsList = this.adaptPostData(myData)
+
+                    return postsList
+                })
+        }
+    }
+
 
     createPost(myPost) {
         return fetch(postsEndpoint, {
