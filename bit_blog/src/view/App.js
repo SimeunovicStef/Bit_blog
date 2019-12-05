@@ -18,8 +18,8 @@ function App() {
 
       <Switch>
         <Route path="/authors/:id" component={SingleAuthor} />
-        <Route path="/posts/:id" component={SinglePost} />
         <Route path="/posts/new" component={NewPost} />
+        <Route path="/posts/:id" component={SinglePost} />
         <Route path="/authors" component={Authors} />
         <Route path="/about" component={About} />
         <Route path="/" component={Main} />
