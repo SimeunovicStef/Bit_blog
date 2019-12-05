@@ -13,7 +13,7 @@ import SingleAuthor from './components/page/SingleAuthor';
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Header />
 
       <Switch>
@@ -26,7 +26,7 @@ function App() {
       </Switch>
 
       <Footer />
-    </div>
+    </>
   );
 }
 

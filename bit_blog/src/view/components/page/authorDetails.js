@@ -24,17 +24,18 @@ export class AuthorDetails extends Component {
     render() {
         const { name, username, email, street, city, zipcode, phone, companyName, slogan } = this.props.author
         return (
-            <div className='container'>
-                <h2 className='center-align'><Link to='/authors' className='left'><button>All authors</button></Link></h2>
+            <main className='container'>
+                <span className='center-align'><Link to='/authors' className='left'><button>All authors</button></Link></span>
                 <div className='row'>
-                    <div className='col s6'>
-                        <img src={this.state.pictureSrc} alt='' />
+                    <h3 className="authr1">{name}</h3>
+                    <div className='col s3'>
+                        <img src={this.state.pictureSrc} alt='' className='image' />
                     </div>
-                    <div className='col s6'>
-                        <h3>{name}</h3>
-                        <p>{username}</p>
-                        <p>{email}</p>
-                        <p>{phone}</p>
+                    <div className='col s6 imgcol'>
+
+                        <p>Username: {username}</p>
+                        <p>email: {email}</p>
+                        <p>phone: {phone}</p>
                     </div>
                 </div>
                 <div className='divider'></div>
@@ -58,7 +59,7 @@ export class AuthorDetails extends Component {
 
                     </div>
                 </div>
-            </div>
+            </main>
         )
     }
 }

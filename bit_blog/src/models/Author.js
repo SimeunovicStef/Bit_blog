@@ -7,6 +7,8 @@ class Author {
         this.street = street;
         this.city = city;
         this.zipcode = zipcode;
+        this.latitude = 25.14058194275956;
+        this.longitutde = -78.01876551061008
         this.phone = phone;
         this.companyName = companyName;
         this.slogan = slogan;

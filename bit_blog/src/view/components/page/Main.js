@@ -34,11 +34,11 @@ class Posts extends React.Component {
 
 const Main = (props) => {
   return (
-    <div>
+    <main>
       <h2 className='post'>POSTS</h2>
       <Posts />
 
-    </div>
+    </main>
   )
 }
 export default Main

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { authorsServices } from '../../../service/Service-authors'
-import { authorDetails, AuthorDetails } from '../page/authorDetails'
+import { AuthorDetails } from '../page/authorDetails'
 
 class SingleAuthor extends React.Component {
     constructor(props) {

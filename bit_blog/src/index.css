@@ -19,6 +19,16 @@ body {
   padding: 30px;
 }
 
+#root {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
 /* header */
 .navMenu li {
   display: inline;
@@ -33,16 +43,27 @@ body {
 /* main */
 h3 {
   color: #039be5;
+  text-align: left;
 }
 
 .post {
   text-align: center;
+  color: #039be5;
 }
 
 li {
   list-style: none;
 }
 
+.image {
+  max-width: 200px;
+  
+ display: inline-block;
+}
+
+p {
+  font-size: larger;
+}
 
 /* fotter */
 footer {
@@ -51,4 +72,24 @@ footer {
 
 hr {
   border: 1px solid black;
+}
+
+button {
+  width:80px;
+  border-radius: 5px;
+  height: 50px;
+  color:black;
+  font-size: 15px;
+}
+
+
+.authr1 {
+text-align: right;
+}
+
+.imgcol {
+  text-align: left;
+  position: relative;
+  display: inline-block;
+
 }
