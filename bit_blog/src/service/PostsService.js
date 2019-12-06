@@ -3,20 +3,18 @@ import { postsEndpoint } from '../shared/constants'
 import { storageServices } from '../shared/storageService'
 
 class PostServices {
-    fetchPosts(postsEndpoint) {
+    fetchPosts() {
         return fetch(postsEndpoint)
             .then(response => response.json())
             .then(myData => {
+                storageServices.saveData('posts', myData)
                 const postsList = this.adaptPostData(myData)
-                storageServices.saveData('posts', postsList)
                 return postsList;
             })
     }
 
     creatPostInstance(post) {
         let { title, body, id, userId } = post;
-        title = `${title.charAt(0).toUpperCase()}`
-        body = `${body.charAt(0).toUpperCase()}`
         return new Post(title, body, id, userId);
     }
 
@@ -46,14 +44,34 @@ class PostServices {
             .then(data => this.creatPostInstance(data))
     }
 
+    fetchRelatedPosts(id) {
+
+        if (id === 11) {
+            const posts = this.getPosts();
+            const relatedPosts = posts.filter(post => {
+                return post.userId === id;
+            })
+            return new Promise((res, rej) => {
+                res(relatedPosts)
+            })
+
+        } else {
+            const relatedPostsEndpoint = `${postsEndpoint}?userId=${id}`
+            return fetch(relatedPostsEndpoint)
+                .then(response => response.json())
+                .then(myData => {
+                    const postsList = this.adaptPostData(myData)
+
+                    return postsList
+                })
+        }
+    }
+
 
     createPost(myPost) {
         return fetch(postsEndpoint, {
             method: 'POST',
             body: JSON.stringify(myPost)
-            // headers: {
-            //     'Content-Type':'application/json'
-            // }
         })
             .then(response => response.json())
             .then((myPost) => {
@@ -62,4 +80,4 @@ class PostServices {
     }
 }
 
-export const PostService = new PostServices();
+export const postsServices = new PostServices()
